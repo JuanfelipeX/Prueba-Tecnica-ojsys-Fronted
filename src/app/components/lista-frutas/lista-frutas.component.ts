@@ -16,21 +16,26 @@ export class ListaFrutasComponent implements OnInit {
 
   isModalOpen: boolean = false; // Variable para controlar la apertura/cierre del modal
   nuevaFruta: any = {}; // Objeto para almacenar los datos de la nueva fruta
+  frutasCompletas: any;
 
   constructor(private frutaService: FrutaService) { }
 
   ngOnInit() {
     this.getFrutas();
+    this.applyFilter();
   }
 
   // Obtener la lista de frutas desde el servicio
   getFrutas() {
     this.frutaService.obtenerFrutas()
       .subscribe((response: any) => {
+        this.frutasCompletas = response.frutas;
         this.frutas = response.frutas;
         this.totalPages = response.totalPages;
+        this.applyFilter(); // Aplicar el filtro por tipo de fruta
       });
   }
+  
 
   // Cambiar el tamaño de página
   changePageSize() {
@@ -46,10 +51,15 @@ export class ListaFrutasComponent implements OnInit {
 
   // Aplicar el filtro por tipo de fruta
   applyFilter() {
-    this.currentPage = 1; // Reiniciar a la primera página al aplicar el filtro
-    this.getFrutas();
+    if (this.filterType && this.filterType.trim() !== '') {
+      this.frutas = this.frutasCompletas.filter((fruta: { tipo: any; }) =>
+        fruta.tipo && fruta.tipo.toLowerCase().includes(this.filterType.toLowerCase())
+      );
+    } else {
+      this.frutas = this.frutasCompletas;
+    }
   }
-
+  
   // Abrir el modal para agregar una nueva fruta
   openModal() {
     this.isModalOpen = true;
