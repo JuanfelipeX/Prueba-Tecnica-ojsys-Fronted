@@ -72,4 +72,25 @@ export class ListaFrutasComponent implements OnInit {
       });
     this.closeModal();
   }
+
+  // // Eliminar una fruta
+  // eliminarFruta() {
+  //   this.frutaService.eliminarFruta(this.frutaSeleccionada.id)
+  //     .subscribe(response => {
+  //       // Realizar acciones después de eliminar la fruta, como cerrar el modal,
+  //       // actualizar la lista de frutas, etc.
+  //       this.closeDeleteModal();
+  //       this.getFrutas();
+  //     });
+  // }
+
+  // Editar una fruta
+  // editarFruta() {
+  //   // Lógica para consumir el servicio y editar la fruta
+  //   // Aquí debes agregar la lógica para consumir el servicio de edición de frutas
+  //   // utilizando los datos de this.frutaSeleccionada
+  //   // Una vez que se haya editado la fruta, puedes cerrar el modal:
+  //   this.closeModal();
+  // }
+
 }
