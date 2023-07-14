@@ -19,6 +19,38 @@
   </tbody>
 </table>
 
+<button class="btn btn-success mt-3" (click)="openRegistrarPedidoModal()">Registrar Pedido</button>
+
+<!-- Modal de Registrar Pedido -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{ 'show': isRegistrarPedidoModalOpen, 'd-block': isRegistrarPedidoModalOpen }">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar Pedido</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeRegistrarPedidoModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="frutaSeleccionada">Fruta:</label>
+          <select id="frutaSeleccionada" class="form-control" [(ngModel)]="frutaSeleccionada">
+            <option *ngFor="let fruta of frutasDisponibles" [value]="fruta">{{ fruta.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad:</label>
+          <input id="cantidad" type="number" class="form-control" [(ngModel)]="cantidad">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="agregarFruta()">Agregar</button>
+        <button type="button" class="btn btn-secondary" (click)="closeRegistrarPedidoModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal de Frutas -->
 <div class="modal" tabindex="-1" role="dialog" [ngClass]="{ 'show': isFrutasModalOpen, 'd-block': isFrutasModalOpen }">
   <div class="modal-dialog" role="document">

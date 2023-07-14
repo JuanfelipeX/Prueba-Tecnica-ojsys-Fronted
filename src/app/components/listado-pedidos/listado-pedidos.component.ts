@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FrutaService } from 'src/app/services/fruta/fruta.service';
 import { PedidosService } from 'src/app/services/pedidos/pedidos.service';
 
 @Component({
@@ -12,10 +13,16 @@ export class ListadoPedidosComponent implements OnInit {
   isFrutasModalOpen: boolean = false; // Variable para controlar la apertura/cierre del modal de frutas
   frutasModal: any[] = []; // Arreglo para almacenar las frutas del pedido seleccionado
 
-  constructor(private pedidoService: PedidosService) { }
+  isRegistrarPedidoModalOpen: boolean = false; // Variable para controlar la apertura/cierre del modal de registrar pedido
+  frutasDisponibles: any[] = []; // Arreglo para almacenar las frutas disponibles
+  frutaSeleccionada: any = null; // Variable para almacenar la fruta seleccionada
+  cantidad: number = 0; // Variable para almacenar la cantidad de frutas seleccionadas
+
+  constructor(private pedidoService: PedidosService, private frutaService: FrutaService) { }
 
   ngOnInit() {
     this.getPedidos();
+    this.getFrutasDisponibles();
   }
 
   // Obtener la lista de pedidos desde el servicio
@@ -23,6 +30,14 @@ export class ListadoPedidosComponent implements OnInit {
     this.pedidoService.obtenerPedidos()
       .subscribe((response: any) => {
         this.pedidos = response;
+      });
+  }
+
+  // Obtener la lista de frutas disponibles desde el servicio
+  getFrutasDisponibles() {
+    this.frutaService.obtenerFrutas()
+      .subscribe((response: any) => {
+        this.frutasDisponibles = response;
       });
   }
 
@@ -35,5 +50,25 @@ export class ListadoPedidosComponent implements OnInit {
   // Cerrar el modal de frutas del pedido
   closeFrutasModal() {
     this.isFrutasModalOpen = false;
+  }
+
+  // Abrir el modal de registrar pedido
+  openRegistrarPedidoModal() {
+    this.isRegistrarPedidoModalOpen = true;
+    this.frutaSeleccionada = null;
+    this.cantidad = 0;
+  }
+
+  // Cerrar el modal de registrar pedido
+  closeRegistrarPedidoModal() {
+    this.isRegistrarPedidoModalOpen = false;
+  }
+
+  // Agregar fruta al pedido
+  agregarFruta() {
+    // Realizar acciones para agregar la fruta al pedido, como almacenarla en el arreglo de frutas del pedido
+    // y actualizar el valor total, etc.
+    // Luego, cerrar el modal de registrar pedido:
+    this.closeRegistrarPedidoModal();
   }
 }
