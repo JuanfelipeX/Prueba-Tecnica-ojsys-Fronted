@@ -1,0 +1,41 @@
+<h2>Listado de Frutas</h2>
+
+<div class="form-group">
+  <label for="pageSize">Registros por página:</label>
+  <select id="pageSize" class="form-control" [(ngModel)]="pageSize" (change)="changePageSize()">
+    <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="filterType">Filtrar por tipo:</label>
+  <div class="input-group">
+    <input id="filterType" type="text" class="form-control" [(ngModel)]="filterType" (input)="applyFilter()">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="applyFilter()">Filtrar</button>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Cantidad Disponible</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fruta of frutas">
+      <td>{{ fruta.tipo }}</td>
+      <td>{{ fruta.cantidad }}</td>
+      <td>{{ fruta.precio }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between align-items-center">
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="btn btn-primary">Anterior</button>
+  <span>Página {{ currentPage }} de {{ totalPages }}</span>
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="btn btn-primary">Siguiente</button>
+</div>

@@ -1,0 +1,70 @@
+<div class=" d-flex justify-content-center align-items-center h-100">
+    <div class="col-lg-12 col-xl-11">
+        <div class="card-body p-md-4">
+            <div class="row justify-content-center">
+                <!-- Logo imagen registrase -->
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4993/4993710.png" class="img-fluid "
+                        alt="Logo simple para mostrar registro de herramientas de accesibilidad y usabilidad web">
+                </div>
+
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <!-- Texto registrarse -->
+                    <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">Registrar Terceros</p>
+
+                    <form class="mx-1 mx-md-2">
+
+                        <!-- Input NIT -->
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label">NIT</label>
+                                <input type="text" id="input-nit" class="form-control"
+                                    [(ngModel)]="formulario.nit" name="nit" required />
+                            </div>
+                        </div>
+
+                        <!-- Input Razon Social -->
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="form-label">Razon Social</label>
+                                <input type="text" id="input-descripcion" class="form-control"
+                                    [(ngModel)]="formulario.razon_social" name="razon_social" required />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <!-- Input tipo -->
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label">Tipo</label>
+                                        <input type="text" id="input-tipo"
+                                            class="block w-full py-1 sm:text-sm form-control"
+                                            [(ngModel)]="formulario.tipo" name="tipo" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <!-- Input Activo -->
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label">Activo</label>
+                                        <input type="text" id="input-activo"
+                                            class="block w-full py-1 sm:text-sm form-control"
+                                            [(ngModel)]="formulario.activo" name="activo" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón Registrarse -->
+                        <div class="d-flex justify-content-center mx-4 mb-4">
+                            <button type="button" class="btn btn-primary btn-lg"
+                                (click)="registrarPedido()">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

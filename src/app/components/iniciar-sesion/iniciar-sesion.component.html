@@ -1,0 +1,58 @@
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <!-- Texto Y Logo -->
+                <div class="text-center text-logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1063/1063217.png" style="width: 125px;"
+                        alt="Logo pequeño de accesibilidad web">
+                    <h4 class="mt-4 mb-5 pb-1">Prueba Tecnica de Conocimiento</h4>
+                </div>
+
+                <form>
+                    <!-- Pequeño párrafo -->
+                    <p class="text-inicio text-center">Por favor inicia sesión con tu cuenta</p>
+
+                    <!-- Correo input -->
+                    <div class="form-outline my-4">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control form-control-lg" id="input-email"
+                            [(ngModel)]="formulario.email" name="email" email required />
+                    </div>
+
+                    <!-- Contraseña input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" id="input-password" class="form-control form-control-lg"
+                            [(ngModel)]="formulario.password" name="password" required />
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="d-flex justify-content-around align-items-center mb-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="input-recordar" checked />
+                            <label class="form-check-label">Recuérdeme </label>
+                        </div>
+                        <a href="iniciar-sesion">¿Olvido su Contraseña?</a>
+                    </div>
+
+                    <!-- Submit Botón -->
+                    <div class="text-center pt-1 mb-2 pb-1 ">
+                        <button class="btn btn-primary px-5" type="button" (click)="login()">Iniciar Sesión</button>
+                    </div>
+
+                    <div class="divider d-flex align-items-center my-4"></div>
+
+                    <!-- Creacion de Cuenta -->
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                        <p class="mb-0 me-2">¿No tiene Cuenta?</p>
+                        <a href="registrarse" class="btn btn-outline-danger">Crear Cuenta</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

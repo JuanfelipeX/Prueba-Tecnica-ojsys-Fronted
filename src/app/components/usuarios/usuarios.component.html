@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center" id="seccion-herramientas">
+    <nav class="navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <form class="form-inline my-2 my-lg-0" >
+                        <div class="input-group mt-4">
+                            <input #inputSearch class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+                                style="width: 600px;" (keyup)="onSearch(inputSearch.value)">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+
+
+<!-- app.component.html -->
+<div class="container">
+    <h1>Lista de Usuarios</h1>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of formulario">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ user.name }}</strong>
+                    <p class="mb-0">{{ user.email }}</p>
+                </div>
+                <button class="btn btn-primary">Ver detalles</button>
+            </div>
+        </li>
+    </ul>
+</div>
