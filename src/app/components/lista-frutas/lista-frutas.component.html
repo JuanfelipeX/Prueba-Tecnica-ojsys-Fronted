@@ -1,13 +1,13 @@
 <h2>Listado de Frutas</h2>
 
-<div class="form-group">
+<div>
   <label for="pageSize">Registros por página:</label>
   <select id="pageSize" class="form-control" [(ngModel)]="pageSize" (change)="changePageSize()">
     <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
   </select>
 </div>
 
-<div class="form-group">
+<div>
   <label for="filterType">Filtrar por tipo:</label>
   <div class="input-group">
     <input id="filterType" type="text" class="form-control" [(ngModel)]="filterType" (input)="applyFilter()">
@@ -38,4 +38,38 @@
   <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="btn btn-primary">Anterior</button>
   <span>Página {{ currentPage }} de {{ totalPages }}</span>
   <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="btn btn-primary">Siguiente</button>
+</div>
+
+<button class="btn btn-success mt-3" (click)="openModal()">Agregar Fruta</button>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{ 'show': isModalOpen, 'd-block': isModalOpen }">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Fruta</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input id="nombre" type="text" class="form-control" [(ngModel)]="nuevaFruta.tipo">
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad:</label>
+          <input id="cantidad" type="number" class="form-control" [(ngModel)]="nuevaFruta.cantidad">
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio Individual:</label>
+          <input id="precio" type="number" class="form-control" [(ngModel)]="nuevaFruta.precio">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="crearFruta()">Crear</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
 </div>
