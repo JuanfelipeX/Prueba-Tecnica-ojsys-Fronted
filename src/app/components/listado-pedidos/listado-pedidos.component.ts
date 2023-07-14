@@ -29,7 +29,11 @@ export class ListadoPedidosComponent implements OnInit {
   getPedidos() {
     this.pedidoService.obtenerPedidos()
       .subscribe((response: any) => {
-        this.pedidos = response;
+        if (Array.isArray(response)) {
+          this.pedidos = response;
+        } else {
+          this.pedidos = [response]; // Convertir el objeto de pedido en un arreglo con un solo elemento
+        }
       });
   }
 
@@ -37,7 +41,11 @@ export class ListadoPedidosComponent implements OnInit {
   getFrutasDisponibles() {
     this.frutaService.obtenerFrutas()
       .subscribe((response: any) => {
-        this.frutasDisponibles = response;
+        if (Array.isArray(response)) {
+          this.frutasDisponibles = response;
+        } else {
+          this.frutasDisponibles = [response]; // Convertir el objeto de fruta en un arreglo con un solo elemento
+        }
       });
   }
 
